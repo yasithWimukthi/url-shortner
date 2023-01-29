@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Url;
 use App\Http\Requests\StoreUrlRequest;
 use App\Http\Requests\UpdateUrlRequest;
+use http\Client\Response;
 
 class UrlController extends Controller
 {
@@ -36,7 +37,9 @@ class UrlController extends Controller
      */
     public function store(StoreUrlRequest $request)
     {
-        //
+        Url::crete($request->all());
+        return response()->json(['message' => 'Url created successfully'], 201);
+
     }
 
     /**
