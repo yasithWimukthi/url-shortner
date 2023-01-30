@@ -16,7 +16,8 @@ class UrlController extends Controller
      */
     public function index()
     {
-        //
+        // get the latest record
+        return Url::latest()->first();
     }
 
     /**
