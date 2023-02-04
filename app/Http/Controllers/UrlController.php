@@ -38,6 +38,9 @@ class UrlController extends Controller
      */
     public function store(StoreUrlRequest $request)
     {
+        $request->validate([
+            'original_url' => 'required|url'
+        ]);
         Url::crete($request->all());
         return response()->json(['message' => 'Url created successfully'], 201);
 
