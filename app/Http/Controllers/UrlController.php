@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UrlRequest;
 use App\Models\Url;
 use App\Http\Requests\StoreUrlRequest;
 use App\Http\Requests\UpdateUrlRequest;
@@ -36,11 +37,9 @@ class UrlController extends Controller
      * @param  \App\Http\Requests\StoreUrlRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreUrlRequest $request)
+    public function store(UrlRequest $request)
     {
-        $request->validate([
-            'original_url' => 'required|url'
-        ]);
+
         Url::crete($request->all());
         return response()->json(['message' => 'Url created successfully'], 201);
 
